@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/league.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Faut-il fonder l'éducation sur les données probantes ? 
+
+
+
+<small>
+Présentation réalisée dans le cadre du cours MADELHIS - UE701 EC3
+
+7 novembre 2026
+
+Nathanaël Friant
+</small>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faut-il fonder l'éducation sur les données probantes ?
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Psalter_1340.jpg" alt="" style="width: 250px; object-fit: fill">
+
+
+
+
+
+<small>
+Luttrell Psalter. England 1340. London British Museum Add. Ms. 42130. Unknown author.
+</small>
+
+<aside class="notes"><p>Réfléchissons-y un instant. Et pour s&#39;aider, rien de tel qu&#39;une image, telle que celle-ci, beaucoup utilisée par les défenseurs d&#39;une éducation fondée sur les données probantes. </p>
+<p>Tout le monde s&#39;imagine ce que représente la saignée. Une pratique d&#39;un autre temps sans fondement scientifique. Heureusement, les sciences biomédicales sont passées par là, et ont montré qu&#39;il n&#39;y avait aucune donnée probante permettant de justifier que des médecins la pratique.</p>
+<p>En éducation, c&#39;est pareil!</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faut-il fonder l'éducation sur les données probantes ? (2)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Madame_Tussauds_London_-_Spider-Man_statue.jpg" alt="" style="width: 600px; object-fit: fill">
+
+<small>
+Spider-Man (Madame Tussauds, London) 
+© Cristian Bortes
+</small>
+
+<aside class="notes"><p>C&#39;est là qu&#39;intervient un grand philosophe. Un certain Parker. Peter Parker. </p>
+<p>&quot;Un grand pouvoir implique de grandes responsabilités&quot;</p>
+<p>Les enseignants ont un grand pouvoir sur les apprentissages de leurs élèves, cela implique nécessairement une grande responsabilité de les faire progresser selon les meilleurs moyens à leur disposition.</p>
+<p>C&#39;est logique, et c&#39;est la position dans laquelle j&#39;ai été socialisé en tant que docteur en sciences de l&#39;éducation de l&#39;Université de Mons</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faut-il fonder l'éducation sur les données probantes ?
+
+<iframe
+src="https://www.enseignementexplicite.be/WP/wordpress/index.php/2021/01/02/spider-man/" 
+width="800" 
+height="600"
+allow="autoplay"
+>
+</iframe>
+<small>
+source: https://www.enseignementexplicite.be/WP/wordpress/index.php/2021/01/02/spider-man/
+</small>
+<aside class="notes"><p>C&#39;est un site maintenu par de très bons collègues avec lesquels j&#39;ai travaillé longtemps à l&#39;université de Mons.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mon petit Platon de pacotille
+<iframe
+src="https://theses.hal.science/tel-00752087v1" 
+width="800" 
+height="600"
+allow="autoplay"
+>
+</iframe>
+
+<small>
+Source: https://theses.hal.science/tel-00752087v1
+</small>
+
+Notes: 
+J'ai, comme le rappelle Simone Veil, moi aussi un petit Platon de pacotille. Regardez ma thèse de doctorat: j'étais en plein dans la recherche d'une épistémé de "ce qui est juste" en éducation. 
+
+Cette thèse de doctorat, je l'ai réalisée à l'Université de Mons, dans un service particulièrement branché sur un sujet: l'enseignement efficace. Un autre sujet d'intérêt: le pilotage des systèmes éducatifs. On voit très bien cette influence dans ma thèse de doctorat.
+
+Ça, c'était en 2012. En 2018, j'ai obtenu un poste de professeur à l'Université libre de Bruxelles. Là, j'ai trouvé tout autre chose: des gens qui répondaient "non" à la question "faut-il fonder l'éducation sur des données probantes?"
+
+Je me suis demandé pourquoi. C'est cette quête que je vais vous raconter dans les quelques minutes qui restent. Vous allez voir qu'elle va nous emmener ensemble dans une histoire un petit peu différente. Et qu'elle ne va pas m'amener à répondre à la question, mais à délimiter une problématique de recherche.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Trois arguments intéressants
+
+1. Un statut épistémique incertain (Coppe et al., 2026)
+2. La question des finalités de l'éducation (Biesta, 2007, 2010)
+3. La technologie encode des aspects moraux (Farrell & Fourcade, 2023; Fourcade & Healy, 2026)
+
+<aside class="notes"><p>Ma position est privilégiée, car j&#39;ai côtoyé les deux côtés de la controverse. Elle est difficile car j&#39;y ai, des deux côtés, de bons collègues et de bons amis. </p>
+<p>Je ne vais ici que mentionner trois arguments intéressants qui vont me permettre d&#39;utiliser à bon escient ma position privilégiée, et de creuser une problématique très précise, je l&#39;espère originale, et en tous cas au-delà de ce qui semble évident a première vue. Deux arguments que je mentionne rapidement ici sont : </p>
+<ol>
+<li>Un statut épistémique incertain des RCT. Je pose ici une seule question pour la réflexion : est-ce que l&#39;on peut considérer que l&#39;objet des recherches en éducation est de même nature que l&#39;objet de celui des recherches en sciences biomédicales? Un fonctionnement biologique et chimique et &quot;apprendre&quot;, est-ce que ça doit avoir le même statut en recherche? Il y a énormément de choses à dire là-dessus, mais je ne vais pas les développer ici.</li>
+<li>La question des finalités de l&#39;éducation. Elle est redoutable et est traitée en profondeur par Gert Biesta (2007, 2010). En deux mots: le courant des données probantes pose la question &quot;qu&#39;est-ce qui marche&quot; en évitant de se demander &quot;pour quoi?&quot;. Or, cette dimension axiologique est indissociable de l&#39;acte d&#39;éduquer.</li>
+</ol>
+<p>Je ne développe que le troisième argument.</p>
+<p>Il faut cependant savoir que la controverse est bien réelle, actuelle, avec des arguments bien vivants de part et d&#39;autre. On trouve un exemple très récent dans un rapport, controversé, concernant l&#39;application de l&#39;enseignement explicite au Maroc. Le rapport de recherche peut être trouvé ici: <a href="https://r-libre.teluq.ca/4248/1/Monographie_Maroc_actualisee.pdf">https://r-libre.teluq.ca/4248/1/Monographie_Maroc_actualisee.pdf</a> et une lettre ouverte d&#39;un scientifique le remettant en questionpeut être trouvée ici: <a href="https://www.cafepedagogique.net/2026/10/16/abdennasser-naji-lenseignement-explicite-en-question/">https://www.cafepedagogique.net/2026/10/16/abdennasser-naji-lenseignement-explicite-en-question/</a> . Je pense que, malheureusement, le texte de cette lettre ouverte a presqu&#39;entièrement été généré par un modèle de langage (un détecteur, Pangram, me renvoie un score de 86%), ce qui déforce les arguments. Elle a toutefois un mérite pédagogique que j&#39;utilise ici: celui de présenter de façon condensée une position &quot;contre&quot; argumentée.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La technologie encode des aspects moraux
+
+
+>“(...) les référentiels, les standards, les indicateurs, les palmarès, les contrats sont autant de moyens qui, dans un domaine particulier, permettent à des personnes de se coordonner entre elles sans véritable consensus normatif (Mangez et al., 2017)." 
+
+<small>
+(Dupriez, 2025, p. 9)
+</small>
+
+<aside class="notes"><p>Citation complète:</p>
+<p>&quot;Dès lors, au sein de chacune de ces sphères, l’ordre social repose moins sur un projet politique, mais davantage sur des dispositifs de gouvernance : les référentiels, les standards, les indicateurs, les palmarès, les contrats sont autant de moyens qui, dans un domaine particulier, permettent à des personnes de se coordonner entre elles sans véritable consensus normatif (Mangez et al., 2017).&quot;(Dupriez, 2025, p. 9)</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La technologie encode des aspects moraux (2)
+> "Cette double opération, de mobilisation de données chiffrées et d’invitation à une réflexivité fortement balisée, conduit de facto à une restriction de l’autonomie de réflexion des enseignants (...)."
+
+<small>
+(Dupriez, 2025, p. 12)
+</small>
+
+<aside class="notes"><p>Citation complète:</p>
+<p>&quot;Cette double opération, de mobilisation de données chiffrées et d’invitation à une réflexivité fortement balisée, conduit de facto à une restriction de l’autonomie de réflexion des enseignants – vu la focalisation marquée sur des questions d’efficacité des pratiques pédagogiques – au détriment d’autres questions, sur les finalités de l’école par exemple.&quot; (Dupriez, 2025, p. 12)</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ce que je soutiens
+
+- Accélération et passage de
+	- High modernism à
+	- High-tech modernism (Farrell & Fourcade, 2023)
+
+<aside class="notes"><p>Ce que je soutiens, c&#39;est que dans les années à venir, le mouvement, qui semble pourtant récent, de fondement de l&#39;éducation sur des données probantes, va s&#39;accélérer et se passer des technologies &quot;high modernist&quot; -- d&#39;après l&#39;appellation de Farrell et Fourcade §2023) -- que sont les essais contrôlés randomisés ou les enquêtes PISA telles que nous les connaissons, à des technologies qualifiées de &quot;high-tech modernist&quot;telles que la gouvernance par les algorithmes et le machine learning sur des big datas. </p>
+<p>Cela aura une myriade d&#39;impacts sur les apprenants, les enseignants, et sur le monde de l&#39;éducation en général. Williamson (2021) a déjà commencé à réfléchir à ce type d&#39;usage des technologies en éducation. De leur côté, Farrell et Fourcade (2023), ou encore Fourcade et Healy (2026) ont déjà imaginé les répercussions de ce mode de fonctionnement sur les individus, dans la société. Il reste encore beaucoup à faire pour s&#39;emparer, dans le domaine de l&#39;éducation, des outils épistémiques qu&#39;ils ont construits.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Concrètement
+
+<img src="1-Projects/Madelhis/701_EC3/Devoir/kiddom.png" alt="" style="object-fit: scale-down">
+
+
+<small>
+Source: https://www.kiddom.co/atlas
+</small>
+
+<aside class="notes"><p>On trouve des exemples de cette évolution vers le high-tech modernism ici: 
+<a href="https://usprogram.gatesfoundation.org/news-and-insights/articles/what-it-looks-like-to-design-technology-for-teachers-and-the-difference-it-makes-in-the-classroom">https://usprogram.gatesfoundation.org/news-and-insights/articles/what-it-looks-like-to-design-technology-for-teachers-and-the-difference-it-makes-in-the-classroom</a></p>
+<p><a href="https://usprogram.gatesfoundation.org/what-we-do/k-12-education">https://usprogram.gatesfoundation.org/what-we-do/k-12-education</a></p>
+<p><a href="https://www.kiddom.co/learning-intelligence-technology">https://www.kiddom.co/learning-intelligence-technology</a></p>
+<p><a href="https://learningcommons.org/">https://learningcommons.org/</a></p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Références
+
+<div class="block">
+
+<!-- .element: style="text-align: left; font-size: 0.45em" -->
+
+
+Biesta, G. (2007). Why “What Works” Won’t Work : Evidence-Based Practice and the Democratic Deficit in Educational Research. _Educational Theory_, _57_(1), 1‑22. [https://doi.org/10.1111/j.1741-5446.2006.00241.x](https://doi.org/10.1111/j.1741-5446.2006.00241.x)
+
+Coppe, T., Hoekstra, R., Helgetun, J. B., Schwarzbach, N. R., & van der Velden, M. (2026). Evidence-based research in education : The questionable epistemic status of RCTs. _Critical Studies in Education_, _67_(4), 525‑541. [https://doi.org/10.1080/17508487.2025.2501960](https://doi.org/10.1080/17508487.2025.2501960)
+
+Dupriez, V. (2025). Les enseignants face aux nouveaux modes de gouvernance : Que deviennent leur autonomie et leur jugement professionnels ? _Canadian Journal of Educational Administration and Policy_, (205), 7‑18. [https://doi.org/10.7202/1116747ar](https://doi.org/10.7202/1116747ar)
+
+Farrell, H., & Fourcade, M. (2023). The Moral Economy of High-Tech Modernism. _Daedalus_, _152_(1), 225‑235. [https://doi.org/10.1162/daed_a_01982](https://doi.org/10.1162/daed_a_01982)
+
+Fourcade, M., & Healy, K. (2026). Rationalized Stratification. In M. Jackson, N. Dahir, C. Daviss, & D. B. Grusky (Éds.), _Social Stratification_ (5e éd.). Routledge.
+
+Williamson, B. (2021). Re-engineering the infrastructure of performance-based accountability: For-profit philanthropy, learning sciences, and automated education at the Chan-Zuckerberg Initiative. In S. Grek, C. Maroy, & A. Verger (Eds), *World yearbook of education 2021: Accountability and datafication in the governance of education* (pp.59-75). Routledge.
+
+<div class="block">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Licence
+
+<div class="block">
+
+<!-- .element: style="text-align: left; font-size: 0.45em" -->
+
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+Cette œuvre est mise à disposition selon les termes de la licence  
+[Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+© 2026 Nathanaël Friant - Université libre de Bruxelles
+<div class="block">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"showNotes":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
